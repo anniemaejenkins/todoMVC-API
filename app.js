@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/tododb');
 
+const todoController = require('./controllers/todoController.js');
+
 const Todo = require('./models/todo');
 
 const app = express();
@@ -16,11 +18,7 @@ app.get('/', function (req, res) {
 });
 
 // put routes here
-app.get('/api/todos', (req, res) =>{
-  Todo.find({}).then((todos) => {
-    res.render('todo', {model: todos});
-  });
-});
+app.get('/api/todos', todoController.list);
 
 app.post('/api/todos', (req, res) => {
   console.log(req.body);
