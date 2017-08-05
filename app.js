@@ -28,9 +28,8 @@ app.post('/api/todos', todoController.create);
 app.get('/api/todos/:id', todoController.findTodo);
 
 // PUT /api/todos/:id  update a todo item. Returns modified todo item
-app.put('/api/todos/:id', (req, res) => {
+app.put('/api/todos/:id', todoController.updateTodo);
 
-});
 // PATCH /api/todos/:id  partially update a todo item. Returns the modified todo item
 app.patch('/api/todos/:id', (req, res) => {
 
