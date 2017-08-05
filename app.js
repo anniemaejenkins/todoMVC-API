@@ -18,15 +18,15 @@ app.get('/', function (req, res) {
 });
 
 // put routes here
+// list all todos
 app.get('/api/todos', todoController.list);
 
-app.post('/api/todos', (req, res) => {
-  console.log(req.body);
-});
-// GET /api/todos/:id  get a specific todo item
-app.get('/api/todos/:id', (req, res) => {
+// create a todo
+app.post('/api/todos', todoController.create);
 
-});
+// get a specific todo item
+app.get('/api/todos/:id', todoController.findTodo);
+
 // PUT /api/todos/:id  update a todo item. Returns modified todo item
 app.put('/api/todos/:id', (req, res) => {
 
