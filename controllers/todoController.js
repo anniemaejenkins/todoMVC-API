@@ -9,9 +9,9 @@ module.exports = {
     });
   },
   create: function(req, res) {
-    let newTodo = new Todo({title: "wash car"});
+    let newTodo = new Todo({title: req.body.title});
     newTodo.save().then(results => {
-      // console.log("todos", results);
+      console.log("todos", results);
       res.json(results);
     });
   },
@@ -26,7 +26,7 @@ module.exports = {
     let id = req.params.id;
     Todo.findById(id).then(results => {
       // use results.title because each results is an object
-      results.title = "pet all dogs";
+      results.title = req.body.title;
       results.save();
       res.json(results);
     });
@@ -34,7 +34,7 @@ module.exports = {
   changeTodo: function(req, res) {
     let id = req.params.id;
     Todo.findById(id).then(results => {
-      results.title = "pet a specific dog";
+      results.title = req.body.title;
       results.save();
       res.json(results);
     });
